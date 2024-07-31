@@ -1,0 +1,24 @@
+<div class="header px-4 py-2 d-flex justify-content-between">
+  <h2 class="m-0" routerLink="/">E-Commerce App</h2>
+  <div class="btn-wrapper">
+    <ng-container *ngIf="(auth.isAuthenticated$ | async) === false">
+      <app-login-button></app-login-button>
+    </ng-container>
+    <ng-container *ngIf="(auth.isAuthenticated$ | async) === true">
+      <div
+        class="d-md-flex justify-content-md-end align-items-md-center d-none"
+      >
+        <app-logout-button></app-logout-button>
+        <app-profile-context></app-profile-context>
+        <div class="cart-container" routerLink="/cart">
+          <img
+            class="shopping-cart"
+            src="../../../../assets/images/shopping-cart.png"
+            alt=""
+          />
+          <span class="shopping-count">{{ cartLength }}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="details-wrapper h-100 overflow-auto">
+  <div class="row g-0 mt-5">
+    <div class="col-12 col-md-4 px-4">
+      <img
+        class="img-fluid h-100 w-100"
+        src="{{ productDetailById.image }}"
+        alt=""
+      />
+    </div>
+    <div class="col-12 col-md-8 px-4 my-4">
+      <div class="details-wrapper d-flex flex-column">
+        <h2>{{ productDetailById.title }}</h2>
+        <p class="px-2 py-1 price-tag bg-primary text-white">
+          ${{ productDetailById.price }}
+        </p>
+        <p>{{ productDetailById.description }}</p>
+        <ng-container *ngIf="(auth.isAuthenticated$ | async) === true">
+          <button
+            class="btn-danger btn-cart btn text-white"
+            (click)="addToCart(productDetailById)"
+          >
+            Add To cart
+          </button>
+        </ng-container>
+        <ng-container *ngIf="(auth.isAuthenticated$ | async) === false">
+          <button
+            class="btn-danger btn-cart btn text-white"
+            (click)="loginWithRedirect()"
+          >
+            Add To cart
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

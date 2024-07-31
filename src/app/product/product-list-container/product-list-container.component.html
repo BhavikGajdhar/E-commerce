@@ -1,0 +1,12 @@
+<ng-container *ngIf="!id">
+  <app-product-list-presentation
+    [productList]="productList$ | async"
+    (searchData)="searchProduct($event)"
+  ></app-product-list-presentation>
+</ng-container>
+<ng-container *ngIf="id">
+  <app-product-details-presentation
+  [productDetailById]="productDetails$ | async"
+  (addToCartData)="addToCart($event)"
+  ></app-product-details-presentation>
+</ng-container>

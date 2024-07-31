@@ -1,0 +1,43 @@
+<div class="product-list-wrapper h-100 overflow-auto p-2">
+  <form #searchForm="ngForm">
+    <div class="px-3">
+      <input
+        type="text"
+        class="form-control bg-white search-bar"
+        name="search"
+        id="search"
+        autocomplete="off"
+        placeholder="search.."
+        [(ngModel)]="searchText"
+      />
+    </div>
+  </form>
+  <div class="row g-0 mb-5" *ngIf="productList.length > 0; else noResults">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3 product-card px-3 py-3"
+      *ngFor="let product of productList"
+    >
+      <div
+        class="product-item d-flex flex-column justify-content-between bg-white p-3 h-100"
+        routerLink="/detail/{{ product.id }}"
+      >
+        <img
+          class="img-fluid mb-2"
+          src="{{ product.image }}"
+          alt="product-image"
+        />
+        <div>
+          <h5 class="font-semibold">{{ product.title }}</h5>
+          <h5 class="font-semibold">{{ product.category }}</h5>
+          <div class="d-flex justify-content-between">
+            <p class="mb-0">{{ product.rating.rate }}</p>
+            <p class="mb-0">{{ product.rating.count }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noResults>
+    <p>No results found.</p>
+  </ng-template>
+</div>

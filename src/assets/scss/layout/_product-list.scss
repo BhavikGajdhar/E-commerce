@@ -1,0 +1,16 @@
+.product-item {
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px $gray-400;
+}
+
+.search-bar {
+    width: 250px;
+}
+
+.price-tag,
+.btn-cart {
+    width: fit-content;
+}
+.cart-image{
+    width: 100px;
+}
